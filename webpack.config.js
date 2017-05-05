@@ -6,6 +6,7 @@ var config = {
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
+    sourceMapFilename: '[file].map',
     publicPath: '/'
   },
   devServer: {
@@ -25,8 +26,9 @@ var config = {
           test: /\.html$/,
           loader: 'file-loader',
         }
-    ]
-  }
+    ],
+  },
+  devtool: 'source-map'
 };
 
 module.exports = config;

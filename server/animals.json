@@ -1,0 +1,14 @@
+{
+  "animals": [
+    {
+      "id": 1,
+      "name": "Sid",
+      "specie": "Bradipo"
+    },
+    {
+      "id": 2,
+      "name": "Nemo",
+      "specie": "Pesce Pagliaccio"
+    }
+  ]
+}
