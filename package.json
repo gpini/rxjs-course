@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "serve": "./node_modules/.bin/webpack-dev-server -d --colors --inline --hot",
-    "fake-api": "node_modules/.bin/json-server --watch server/animals.json"
+    "fake-api": "node_modules/.bin/json-server --delay 2000 --watch server/animals.json"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
