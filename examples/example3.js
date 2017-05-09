@@ -31,3 +31,15 @@ getAnimalName2(1)
         err => console.log(`Error: e`),
         () => console.log('Completed')
     )
+
+// filter - interval
+Observable.interval(1000).take(10)
+    .filter(x => x < 4)
+
+// count - interval
+Observable.interval(1000).take(10)
+    .filter(x => x < 4)
+
+// first - interval
+Observable.interval(1000).take(10)
+    .first()
