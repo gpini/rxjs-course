@@ -9,6 +9,11 @@ export function api(url, onSuccess, onError) {
                 // console.log('Response for ' + url);
 				onSuccess(JSON.parse(this.responseText));
 		    } else {
+                console.log(this)
+                // if (this.statusText =='abort') {
+                //     console.log('abort')
+                //     return;
+                // }
 		    	onError(this.status);
                 // console.log('Error on ' + url);
 		    }
@@ -31,11 +36,12 @@ export function apiPromise(url) {
 }
 
 export function apiObservable(url) {
-    return Observable(observer => {
-        const xhr = api(response => {
+    return Observable.create(observer => {
+        const xhr = api(url, response => {
             observer.next(response)
-            observer.complete()
+            // observer.complete()
         }, error => {
+            console.log('error')
             observer.error()
         });
         // restituisce teardown logic (che viene effettuata nell'unsubscribe)
