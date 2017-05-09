@@ -1,3 +1,2 @@
 import './index.html'
-
-import './examples/example1.js'
+import './examples/example_search.js'

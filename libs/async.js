@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+
 export function api(url, onSuccess, onError) {
     // console.log('Start call to ' + url);
 	var xhr = new XMLHttpRequest();
@@ -30,8 +32,8 @@ export function apiPromise(url) {
 
 export function apiObservable(url) {
     return Observable(observer => {
-        const xhr = api(() => {
-            observer.next()
+        const xhr = api(response => {
+            observer.next(response)
             observer.complete()
         }, error => {
             observer.error()
