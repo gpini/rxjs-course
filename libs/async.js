@@ -34,7 +34,7 @@ export function apiObservable(url) {
     return Observable.create(observer => {
         const xhr = api(url, response => {
             observer.next(response)
-            // observer.complete()
+            observer.complete()
         }, error => {
             observer.error()
         });
