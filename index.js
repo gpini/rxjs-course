@@ -1,2 +1,2 @@
 import './index.html'
-import './examples/example_list.js'
+import './examples/example_multiclick.js'
