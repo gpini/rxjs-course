@@ -9,11 +9,6 @@ export function api(url, onSuccess, onError) {
                 // console.log('Response for ' + url);
 				onSuccess(JSON.parse(this.responseText));
 		    } else {
-                console.log(this)
-                // if (this.statusText =='abort') {
-                //     console.log('abort')
-                //     return;
-                // }
 		    	onError(this.status);
                 // console.log('Error on ' + url);
 		    }
@@ -41,7 +36,6 @@ export function apiObservable(url) {
             observer.next(response)
             // observer.complete()
         }, error => {
-            console.log('error')
             observer.error()
         });
         // restituisce teardown logic (che viene effettuata nell'unsubscribe)

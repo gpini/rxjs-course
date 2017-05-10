@@ -5,7 +5,7 @@ import { apiObservable } from '../libs/async.js'
 // map target
 // debounceTime
 // RIVEDERE distinctUntilChanged o filter + pairwise + startsWith
-// exhuastMap con chiamata api e map
+// mergeMap con chiamata api e map
 // switchMap con test cancellazione (si vede meglio con animals)
 // catch e Observable.of('-')
 window.onload = () => {
@@ -15,7 +15,7 @@ window.onload = () => {
         .distinctUntilChanged()
 
     let name$ = input$
-        // .exhaustMap(str => {
+        // .mergeMap(str => {
         .switchMap(str => {
             // 'http://localhost:3000/animals/'
             return apiObservable('https://api.github.com/users/' + str).catch(() => Observable.of('-'))
@@ -28,6 +28,6 @@ window.onload = () => {
             // document.getElementById('list').innerHTML  = name;
         },
         err => console.log('err', err),
-        console.log('complete')
+        () => console.log('complete')
     );
 }
