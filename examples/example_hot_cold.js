@@ -22,11 +22,21 @@ const coldSocket$ = new Observable((observer) => {
 
 // COLD improved
 const subject = new Subject();
-const mainSub = hotSocket$.subscribe(subject);
+const mainSub = hotSocket$.subscribe(
+    x => subject,next(x),
+    err => subject.error(err),
+    () => subject.complete()
+);
+// const mainSub = hotSocket$.subscribe(subject);
 let refs = 0;
 const coldImprovedSocket$ = new Observable((observer) => {
     refs++;
-    let sub = subject.subscribe(observer);
+    let sub = subject.subscribe(
+        x => observer,next(x),
+        err => observer.error(err),
+        () => observer.complete()
+    );
+    // let sub = subject.subscribe(observer);
     return () => {
         refs--;
         if (refs === 0) mainSub.unsubscribe();
