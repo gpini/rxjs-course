@@ -1,2 +1,2 @@
 import './pages/index.html'
-import './examples/example_ipotenusa.js'
+import './examples_done/example_search_wrong.js'

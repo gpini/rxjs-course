@@ -16,6 +16,7 @@
     "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
+    "bluebird": "^3.5.0",
     "json-server": "^0.10.0",
     "rxjs": "^5.3.1"
   }
