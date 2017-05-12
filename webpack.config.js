@@ -24,7 +24,7 @@ var config = {
       },
         {
           test: /\.html$/,
-          loader: 'file-loader',
+          loader: 'file-loader?name=index.html',
         }
     ],
   },
