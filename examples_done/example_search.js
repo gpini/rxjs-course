@@ -18,14 +18,14 @@ window.onload = () => {
         // .mergeMap(str => {
         .switchMap(str => {
             // 'http://localhost:3000/animals/'
-            return apiObservable('https://api.github.com/users/' + str).catch(() => Observable.of('-'))
+            return apiObservable('http://api.github.com/users/' + str).catch(() => Observable.of('-'))
         })
         .map(response => response.name);
 
     name$.subscribe(
         name => {
-            console.log('name', name);
-            // document.getElementById('list').innerHTML  = name;
+            // console.log('name', name);
+            document.getElementById('list').innerHTML  = name;
         },
         err => console.log('err', err),
         () => console.log('complete')

@@ -2,9 +2,30 @@
     <head>
         <title>Test RxJs</title>
         <script src="bundle.js"></script>
+        <style>
+            label {
+                font-size: 14px;
+                display: block;
+                font-weight: bold;
+            }
+            input {
+                border-radius: 5px;
+                border: 1px solid gray;
+                padding: 5px 3px;
+                display: block;
+            }
+            #list {
+                margin-top: 15px;
+                border: 1px solid blue;
+                border-radius: 5px;
+                padding: 15px;
+                display: inline-block;
+            }
+        </style>
     </head>
     <body>
-        <input id="input"/>
+        <label for="input">Search</label>
+        <input name="search" id="input"/>
         <div id="list"></div>
     </body>
 </html>

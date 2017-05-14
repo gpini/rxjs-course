@@ -1,2 +1,2 @@
-import './pages/index_list.html'
-import './examples/example_list.js'
+import './pages/index_ipotenusa.html'
+import './examples_done/example_ipotenusa.js'

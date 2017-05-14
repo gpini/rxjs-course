@@ -24,7 +24,7 @@ window.onload = () => {
   refreshClick$.startWith(undefined).exhaustMap(() => {
     setVisible('progress', true);
     setVisible('error', false);
-    return apiObservable('http://localhost:3000/animalss')
+    return apiObservable('http://localhost:3000/animals')
       .retry(1)
       .finally(() => {
         setVisible('progress', false);
