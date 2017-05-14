@@ -12,18 +12,18 @@ let replaceList = animals => {
     })
     let list = document.getElementById('list');
     list.innerHTML = '';
-    list.appendChild(div);
+    list.appendChild(ul);
 }
 
 window.onload = () => {
-
+  
 }
 
 // refreshClick$ e stopClick$
-// mergeMap e replaceWith
-// exhaustMao
+// mergeMap e replaceList
+// exhaustMap
 // takeUntil
-// retry e catch
 // startWith
-// setError do e catch
+// retry
 // setProgress con finally
+// setError do e catch

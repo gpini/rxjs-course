@@ -2,55 +2,56 @@ import { Observable } from 'rxjs';
 import { apiObservable } from '../libs/async.js'
 import { setVisible } from '../libs/dom.js'
 
-// refreshClick$ e stopClick$
-// mergeMap e replaceWith
-// exhaustMao
-// takeUntil
-// retry e catch
-// startWith
-// setError do e catch
-// setProgress con finally
+
+let replaceList = animals => {
+    let ul = document.createElement('ul');
+    animals.forEach(animal => {
+        let li = document.createElement('li');
+        li.innerHTML = animal.name;
+        ul.appendChild(li);
+    })
+    let list = document.getElementById('list');
+    list.innerHTML = '';
+    list.appendChild(ul);
+}
 
 window.onload = () => {
-    let refreshClick$ = Observable.fromEvent(document.getElementById('refresh'), 'click').startWith(undefined)
-    let stopClick$ = Observable.fromEvent(document.getElementById('stop'), 'click')
+  setVisible('progress', false);
+  let refreshClick$ = Observable.fromEvent(document.getElementById('refresh'), 'click')
 
-    let replaceList = animals => {
-        let ul = document.createElement('ul');
-        animals.forEach(animal => {
-            let li = document.createElement('li');
-            li.innerHTML = animal.name;
-            ul.appendChild(li);
-        })
-        let list = document.getElementById('list');
-        list.innerHTML = '';
-        list.appendChild(div);
-    }
+  let stopClick$ = Observable.fromEvent(document.getElementById('stop'), 'click')
 
-    let animals$ = refreshClick$
-        // .mergeMap(str => {
-        .exhaustMap(() => {
-            setVisible('progress', true)
-            return apiObservable('http://localhost:3000/animals')
-                .retry(3)
-                .takeUntil(stopClick$)
-                .do(() => {
-                    setVisible('error', false)
-                })
-                .finally(() => {
-                    setVisible('progress', false)
-                })
-                .catch(() => {
-                    setVisible('error', true)
-                    return Observable.of([])
-                })
-        })
-
-    animals$.subscribe(
-        animals => {
-            replaceList(animals);
-        },
-        err => console.log('err', err),
-        () => console.log('complete')
-    );
+  refreshClick$.startWith(undefined).exhaustMap(() => {
+    setVisible('progress', true);
+    setVisible('error', false);
+    return apiObservable('http://localhost:3000/animalss')
+      .retry(1)
+      .finally(() => {
+        setVisible('progress', false);
+      })
+      .do(() => {
+        setVisible('error', false);
+      })
+      .catch(() => {
+        setVisible('error', true);
+        return Observable.of([])
+      })
+      .takeUntil(stopClick$);
+  })
+  .subscribe(
+    animals => {
+      replaceList(animals)
+    },
+    error => console.log(error),
+    () => console.log('Complete!')
+  )
 }
+
+// refreshClick$ e stopClick$
+// mergeMap e replaceList
+// exhaustMap
+// takeUntil
+// startWith
+// retry
+// setProgress con finally
+// setError do e catch
