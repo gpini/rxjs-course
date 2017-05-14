@@ -9,6 +9,16 @@
       "id": 2,
       "name": "Nemo",
       "specie": "Pesce Pagliaccio"
+    },
+    {
+      "id": 3,
+      "name": "Pluto",
+      "specie": "Cane"
+    },
+    {
+      "id": 4,
+      "name": "Dumbo",
+      "specie": "Elefante"
     }
   ]
 }
