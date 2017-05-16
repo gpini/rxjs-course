@@ -18,12 +18,14 @@ import {api, apiPromise} from '../libs/async.js'
 // api('http://localhost:3000/animals',
 // 	function(response) {
 // 		var animals = response;
-// 		api('http://localhost:3000/animals/' + animals[0].id, function(response) {
-// 			var firstAnimal = response;
-// 			console.log('Successfully get animal ' + firstAnimal.name);
-// 		}, function(error) {
-// 			console.log('Error!', error);
-// 		});
+// 		api('http://localhost:3000/animals/' + animals[0].id,
+//             function(response) {
+//                 var firstAnimal = response;
+//                 console.log('Successfully get animal ' + firstAnimal.name);
+//             }, function(error) {
+//                 console.log('Error!', error);
+//             }
+//         );
 // 	}, function(error) {
 // 			console.log('Error!', error);
 // 	}
